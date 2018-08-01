@@ -51,26 +51,26 @@ class Solution:
 
 # Most easy to be thought of
 class Solution:
+    ugly = [1]
+    u2 = [2]
+    u3 = [3]
+    u5 = [5]
+    for i in range(1, 1961):
+        chosen_one = min(u2[0], u3[0], u5[0])
+        if chosen_one == u2[0]:
+            u2.pop(0)
+        if chosen_one == u3[0]:
+            u3.pop(0)
+        if chosen_one == u5[0]:
+            u5.pop(0)
+        u2.append(chosen_one * 2)
+        u3.append(chosen_one * 3)
+        u5.append(chosen_one * 5)
+        ugly.append(chosen_one)
     def nthUglyNumber(self, n):
         """
         :type n: int
         :rtype: int
         """
-        ugly = [1]
-        u2 = [2]
-        u3 = [3]
-        u5 = [5]
-        for i in range(1, n):
-            chosen_one = min(u2[0], u3[0], u5[0])
-            if chosen_one == u2[0]:
-                u2.pop(0)
-            if chosen_one == u3[0]:
-                u3.pop(0)
-            if chosen_one == u5[0]:
-                u5.pop(0)
-            u2.append(chosen_one * 2)
-            u3.append(chosen_one * 3)
-            u5.append(chosen_one * 5)
-            ugly.append(chosen_one)
             
-        return ugly[n-1]
+        return self.ugly[n-1]
