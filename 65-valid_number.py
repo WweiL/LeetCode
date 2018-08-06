@@ -4,6 +4,7 @@ class Solution:
         :type s: str
         :rtype: bool
         """
+        # Use an array to implement DFA, using indexs as states
         dfa = [
                 {},
                 {"blank": 1, "sign": 2, "digit": 3, "dot": 4},
