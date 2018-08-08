@@ -27,9 +27,7 @@ class Solution(object):
 
             both_side_val = left + right + root.val
             one_side_val = max(left, right) + root.val
-
-            max_val = max(both_side_val, one_side_val, root.val)
-            self.max_global = max(max_val, self.max_global)
+            self.max_global = max(both_side_val, one_side_val, root.val, self.max_global)
             return max(one_side_val, root.val)
         
 # Floyd-Warshall - IMPOSSIBLE!
