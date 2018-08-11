@@ -5,16 +5,14 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        if len(nums) == 1:
-            return 1 if nums[0] == k else 0
-        
-        sum_idx = {0:1}
+    
+        sum_cnt = {0:1}
         s = 0
         counter = 0
         for i in range(len(nums)):
             s += nums[i]
-            counter += sum_idx.get(s-k, 0)
-            sum_idx[s] = sum_idx.get(s, 0) + 1
+            counter += sum_cnt.get(s-k, 0)
+            sum_cnt[s] = sum_cnt.get(s, 0) + 1
                  
         return counter
 
