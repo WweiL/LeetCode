@@ -10,13 +10,13 @@ class Solution:
         :rtype: int
         """
         def binSearch(low, hi):
-            middle = (low+hi) // 2
-            if middle == low:
-                return low if isBadVersion(low) else hi
+            if low == hi:
+                return low
             
+            middle = (low+hi) // 2
             if isBadVersion(middle):
                 return binSearch(low, middle)
             else:
-                return binSearch(middle, hi)
+                return binSearch(middle+1, hi)
             
         return binSearch(1, n)
