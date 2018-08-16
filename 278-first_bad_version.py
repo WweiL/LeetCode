@@ -10,7 +10,7 @@ class Solution:
         :rtype: int
         """
         def binSearch(low, hi):
-            middle = int((low+hi)/2)
+            middle = (low+hi) // 2
             if middle == low:
                 return low if isBadVersion(low) else hi
             
