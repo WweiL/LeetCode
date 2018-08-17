@@ -1,14 +1,14 @@
 class Log:
     def __init__(self, log):
-        self.id = int(log[0])
-        self.status = log[2:-2]
-        self.ts = int(log[-1])
+        self.id, self.status, self.ts = log.split(":")
+        self.id = int(self.id)
+        self.ts = int(self.ts)
 
 class Solution:
     def exclusiveTime(self, n, logs):
         import collections
         ans = [0] * n
-        stack = stack = collections.deque()
+        stack = collections.deque()
         prev_time = 0
         _logs = []
         
@@ -17,7 +17,7 @@ class Solution:
       
         for log in _logs:
             time = log.ts
-
+            
             if log.status == 'start':
                 if stack:
                     ans[stack[-1]] += time - prev_time
