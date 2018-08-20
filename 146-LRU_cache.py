@@ -1,5 +1,6 @@
 from collections import deque
 class LRUCache:
+
     def __init__(self, capacity):
         """
         :type capacity: int
@@ -33,7 +34,7 @@ class LRUCache:
         
         if self.cache.get(key, -1) != -1: # updating an existing value
             pass
-        else: # inserting a new value
+        else: # inserting into a new value
             if self.used_size < self.capacity:
                 self.used_size += 1
             else:
