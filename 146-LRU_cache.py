@@ -1,6 +1,5 @@
 from collections import deque
 class LRUCache:
-
     def __init__(self, capacity):
         """
         :type capacity: int
