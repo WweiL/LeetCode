@@ -23,7 +23,6 @@ class Solution:
                         i += 1
                 elif self.curr == "sl": # slash, // ...
                     self.curr = "wr"
-                    self.flush()
                     break
                 else: # st, star, /* ... */
                     end = line[start:].find("*/")
@@ -56,4 +55,34 @@ class Solution:
             dfa.parse(code)
         dfa.flush()
         return dfa.ans
+
+# seems better        
+#     def removeComments(self, source):
+#         """
+#         :type source: List[str]
+#         :rtype: List[str]
+#         """
+#         # dfa = self.DFA()
+#         # for code in source:
+#         #     dfa.parse(code)
+#         # dfa.flush()
+#         # return dfa.ans
+#         ans, tmp, block = [], '', False
+#         for line in source:
+#             i = 0
+#             n = len(line)
+#             while i < n:
+#                 if line[i] == '/' and i+1 != n and line[i+1] == '/' and not block:
+#                     break
+#                 elif line[i] == '/' and i+1 != n and line[i+1] == '*' and not block:
+#                     i, block = i+1, True
+#                 elif line[i] == '*' and i+1 != n and line[i+1] == '/' and block:
+#                     i, block = i+1, False
+#                 elif not block:
+#                     tmp += line[i]
+#                 i+=1
+#             if tmp and not block:
+#                 ans.append(tmp)
+#                 tmp = ''
+#         return ans
         
