@@ -7,36 +7,36 @@ class Solution:
         """
         return self.findLS(s, k, 0, len(s))
 
-    # Version 1, not good
-#     def findLS(self, s, k, left, right):
-#         # s[left, right)
-#         from collections import Counter
-#         total = Counter(s[left: right])
-#         invalid = set()
-#         for i in total:
-#             if total[i] < k:
-#                 invalid.add(i)
-#         start = left
-#         ans = 0
-#         rem = set()
-#         working = Counter()
-#         for i in range(left, right):
-#             if s[i] in invalid:
-#                 ans = max(ans, self.findLS(s, k, start, i))
-#                 rem = set()
-#                 working = Counter()
-#                 start = i+1
-#             else:
-#                 working[s[i]] += 1
-#                 if working[s[i]] >= k:
-#                     if s[i] in rem:
-#                         rem.remove(s[i])
-#                 else:
-#                     rem.add(s[i])
+    Version 1, not good
+    def findLS(self, s, k, left, right):
+        # s[left, right)
+        from collections import Counter
+        total = Counter(s[left: right])
+        invalid = set()
+        for i in total:
+            if total[i] < k:
+                invalid.add(i)
+        start = left
+        ans = 0
+        rem = set()
+        working = Counter()
+        for i in range(left, right):
+            if s[i] in invalid:
+                ans = max(ans, self.findLS(s, k, start, i))
+                rem = set()
+                working = Counter()
+                start = i+1
+            else:
+                working[s[i]] += 1
+                if working[s[i]] >= k:
+                    if s[i] in rem:
+                        rem.remove(s[i])
+                else:
+                    rem.add(s[i])
             
-#                 if len(rem) == 0:
-#                     ans = max(ans, i-start+1)
-#         return ans
+                if len(rem) == 0:
+                    ans = max(ans, i-start+1)
+        return ans
     
 # #         # method 1: recursive
         
