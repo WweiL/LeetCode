@@ -57,3 +57,31 @@ class Solution(object):
 #                 lists[i] = lists[i].next
 #                 temp = temp.next
 #         return head.next
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+# class Solution(object):
+#     def mergeKLists(self, lists):
+#         """
+#         :type lists: List[ListNode]
+#         :rtype: ListNode
+#         """
+#         # better heap
+#         sentinel = ListNode(-1)
+#         curr = sentinel
+#         heads = [(i.val, i) for i in lists if i]
+#         # O(k)
+#         heapq.heapify(heads)
+#         while heads:
+#             val, node = heads[0]
+#             if not node.next:
+#                 heapq.heappop(heads)
+#             else:
+#                 heapq.heapreplace(heads, (node.next.val, node.next))
+#             curr.next = node
+#             curr = curr.next
+#         return sentinel.next
