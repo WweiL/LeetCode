@@ -1,4 +1,6 @@
 class Solution:
+    # recursive, O(n) time, O(1) space
+    # think every number as number * 1
     def calculate(self, s):
         """
         :type s: str
@@ -12,11 +14,10 @@ class Solution:
             c = s[i]
             if c.isdigit():
                 start = i
-                while i < n and s[i].isdigit():
+                while i+1 < n and s[i+1].isdigit():
                     i += 1
-                num = int(s[start: i])
+                num = int(s[start: i+1])
                 md_res = (md_res * num) if mul_div == '*' else (md_res // num)
-                i -= 1
             elif c in ["*", "/"]:
                 mul_div = c
             elif c in ['+', '-']:
@@ -24,6 +25,17 @@ class Solution:
                 am_res += sign * md_res
                 add_minus = c
                 mul_div, md_res = '*', 1
+            elif c == '(':
+                j, cnt = i+1, 1
+                while cnt != 0:
+                    cnt += 1 if s[j] == '(' else 0
+                    cnt -= 1 if s[j] == ')' else 0
+                    j += 1
+                num = self.calculate(s[i+1:])
+                md_res = (md_res * num) if mul_div == '*' else (md_res // num)
+                i = j-1
+            elif c == ')':
+                break
             i += 1
         sign = 1 if add_minus == '+' else -1
         return am_res + md_res * sign
