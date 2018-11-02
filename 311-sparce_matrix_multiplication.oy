@@ -1,0 +1,27 @@
+from collections import defaultdict
+class Solution:
+    def multiply(self, A, B):
+        """
+        :type A: List[List[int]]
+        :type B: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        # C_ij = sum{k: A_ik* B_kj}
+        m, n, q = len(A), len(A[0]), len(B[0])
+        a, b = defaultdict(list), defaultdict(list)
+
+        for i in range(m):
+            for j in range(n):
+                if A[i][j] != 0:
+                    a[j].append(i)
+        for i in range(n):
+            for j in range(q):
+                if B[i][j] != 0:
+                    b[i].append(j)
+        
+        res = [[0]*q for _ in range(m)]
+        for k in range(n):
+            for i in a[k]:
+                for j in b[k]:
+                    res[i][j] += A[i][k]*B[k][j]
+        return res
