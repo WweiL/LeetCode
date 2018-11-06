@@ -34,6 +34,6 @@ class Solution:
             mid = (l+r+1) // 2
             if (mid**2 <= x):
                 l = mid
-            else:
+            else: # mid^2 > x, mid cannot be inside the interval
                 r = mid-1
         return l
