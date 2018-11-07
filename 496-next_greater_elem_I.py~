@@ -12,9 +12,11 @@ class Solution:
             if len(stack) == 0 or stack[-1] < num:
                 while stack and stack[-1] < num:
                     stack.pop()
-            nextGt[num] = stack[-1] if len(stack) > 0 else -1
-            stack.append(num)
-            
+                nextGt[num] = stack[-1] if len(stack) > 0 else -1
+                stack.append(num)
+            else:
+                nextGt[num] = stack[-1]
+                stack.append(num)
         ans = nums1
         for i in range(len(ans)):
             ans[i] = nextGt[ans[i]]
