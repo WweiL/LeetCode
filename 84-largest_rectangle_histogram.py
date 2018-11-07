@@ -50,12 +50,12 @@ class Solution:
         i, n = 0, len(heights)
         ans = 0
         while i < n:
-            if len(stack) == 0 or heights[stack[-1]] < heights[i]:
+            if len(stack) == 0 or heights[stack[-1]] < heights[i]: # increasing
                 stack.append(i)
                 i += 1
             else:
                 top = stack.pop()
-                ans = max(ans, (i-stack[-1]-1) * heights[top]) if stack else max(ans, heights[top] * i)
+                ans = max(ans, (i-stack[-1]-1) * heights[top]) if stack else max(ans, heights[top] * i) # empty when heights[top] is the minimum so far, so area is i * heights[top]
         # for i in range(n):
             # while len(stack) != 0 and heights[stack[-1]] >= heights[i]:
             #     top = stack.pop()

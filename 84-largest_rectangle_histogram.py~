@@ -38,3 +38,27 @@ class Solution:
             s.append(i)
         return left
                     
+
+class Solution:
+    def largestRectangleArea(self, heights):
+        """
+        :type heights: List[int]
+        :rtype: int
+        """
+        stack = collections.deque()
+        heights.append(-1)
+        i, n = 0, len(heights)
+        ans = 0
+        while i < n:
+            if len(stack) == 0 or heights[stack[-1]] < heights[i]:
+                stack.append(i)
+                i += 1
+            else:
+                top = stack.pop()
+                ans = max(ans, (i-stack[-1]-1) * heights[top]) if stack else max(ans, heights[top] * i)
+        # for i in range(n):
+            # while len(stack) != 0 and heights[stack[-1]] >= heights[i]:
+            #     top = stack.pop()
+            #     ans = max(ans, (i-stack[-1]-1) * heights[top]) if stack else max(ans, heights[top] * i)
+            # stack.append(i)
+        return ans
