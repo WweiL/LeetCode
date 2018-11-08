@@ -5,17 +5,14 @@ class Solution:
         :type nums2: List[int]
         :rtype: List[int]
         """
-        shorter = nums1 if len(nums1) < len(nums2) else nums2
-        longer = nums2 if len(nums1) < len(nums2) else nums1
-        d_s = {}
-        for i in shorter+longer:
-            d_s[i] = 0
-        for i in shorter:
-            d_s[i] += 1
-            
+        if len(nums1) > len(nums2):
+            return self.intersect(nums2, nums1)
+        count1 = collections.Counter(nums1)
         ans = []
-        for i in longer:
-            if d_s[i] > 0:
+        for i in nums2:
+            if count1[i] > 0:
                 ans.append(i)
-                d_s[i] -= 1
+                count1[i] -= 1
         return ans
+
+    
