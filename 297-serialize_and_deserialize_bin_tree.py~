@@ -1,4 +1,4 @@
-# def serialize(self, root):
+#### def serialize(self, root):
 #         """Encodes a tree to a single string.
         
 #         :type root: TreeNode
@@ -91,16 +91,19 @@ class Codec:
         if data == []:
             return []
         queue = collections.deque()
-        root = TreeNode(data.pop(0))
+        root = TreeNode(data[0])
         queue.append(root)
-        endIdx = 0
-        while queue and endIdx < len(data):
+        endIdx, n = 1, len(data)
+        while queue and endIdx < n:
             r = queue.popleft()
             if r:
-                # GOOD! TODO: use a pointer
-                # NOT GOOD!
-                left = TreeNode(data.pop(0)) if data[0] != None else data.pop(0)  # CAUTION!
-                right = TreeNode(data.pop(0)) if data[0] != None else data.pop(0) # CAUTION!
+                left, right = None, None
+                if endIdx < n and data[endIdx] != None: # None not 0!
+                    left = TreeNode(data[endIdx])
+                endIdx += 1
+                if endIdx < n and data[endIdx] != None: # # None not 0!
+                    right = TreeNode(data[endIdx])
+                endIdx += 1
                 r.left = left
                 r.right = right
                 queue.append(left)

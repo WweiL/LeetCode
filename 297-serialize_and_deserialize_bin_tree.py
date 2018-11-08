@@ -89,7 +89,7 @@ class Codec:
         """
         # CAUTION!
         if data == []:
-            return []
+            return None
         queue = collections.deque()
         root = TreeNode(data[0])
         queue.append(root)
@@ -109,7 +109,7 @@ class Codec:
                 queue.append(left)
                 queue.append(right)
 
-        return root if root else []
+        return root
 
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
