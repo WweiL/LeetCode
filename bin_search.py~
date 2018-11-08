@@ -12,7 +12,7 @@ def search(arr, target):
             l = m + 1
         elif arr[m] >= target:
             r = m
-    #print(arr[l])
+    //print(arr[l])
     return arr[l]
 #     n = len(arr)
 #     if target > arr[-1]:
