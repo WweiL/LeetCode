@@ -59,17 +59,3 @@ class Solution(object):
         #         if sum_tmp == k:
         #             cnt += 1
         # return cnt
-
-        # ------------------------------------------------------------------------------------------------------------
-        # O(n) time, O(1) space, given all entries positive
-        if k <= 0:
-            return 0;
-        i, curr_sum, ans = 0, 0, 0
-        for num in nums:
-            curr_sum += num
-            while curr_sum > k:
-                curr_sum -= nums[i]
-                i += 1
-            if curr_sum == k:
-                ans += 1
-        return ans
