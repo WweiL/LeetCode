@@ -1,32 +1,34 @@
-import random
 class Solution:
-
     def __init__(self, nums):
         """
         :type nums: List[int]
         """
-        self.dic = {}
-        n = len(nums)
-        i = 0
-        while i < n:
-            v = nums[i]
-            self.dic[v] = [i, i]
-            while i+1 < n and nums[i+1] == v:
-                self.dic[v][1] += 1
-                i += 1
-            i += 1
+        # self.num_idx = collections.defaultdict(list)
+        # for i, v in enumerate(nums):
+            # self.num_idx[v].append(i)
+        self.nums = nums
 
     def pick(self, target):
         """
         :type target: int
         :rtype: int
         """
-        low, hi = self.dic[target]
-        if low == hi:
-            return low
-        else:
-            return random.randint(low, hi)
-
+        # indicies = self.num_idx[target]
+        # res = indicies[0]
+        # for i in range(1, len(indicies)):
+            # if random.choice(range(i+1)) == 0:
+                # res = indicies[i]
+        # return res
+        res = 0
+        cnt = 0
+        for i in range(len(self.nums)):
+            if self.nums[i] != target:
+                continue
+            else:
+                cnt += 1
+                if random.randint(1, cnt) == 1:
+                    res = i
+        return res
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
