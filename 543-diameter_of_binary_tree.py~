@@ -14,7 +14,7 @@ class Solution(object):
             return 0
         self.d = 0
         self.diameterFinder(root)
-        return self.d
+        return self.d-1
 
     def diameterFinder(self, root):
         if not root:
@@ -22,5 +22,6 @@ class Solution(object):
             
         left = self.diameterFinder(root.left)
         right = self.diameterFinder(root.right)
-        self.d = max(self.d, left + right)
+        self.d = max(self.d, left + right + 1)
         return max(left, right) + 1
+        
